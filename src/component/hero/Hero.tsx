@@ -1,13 +1,6 @@
 import React from 'react';
-import { Pie } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  ArcElement,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+import ChartComponent from '../chart/ChartComponent';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Hero = () => {
   // Sample data for the pie chart
@@ -23,8 +16,19 @@ const Hero = () => {
     ],
   };
 
+    // Options for the pie chart
+    const options = {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'bottom',
+          },
+        },
+      };
+
   return (
-    <section id="hero" className="bg-gray-100 dark:bg-background py-20">
+    <section id="hero" className="bg-gray-100 dark:bg-background py-80">
       <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center justify-between">
         <div className="md:w-1/2">
           <h1 className="text-4xl font-bold text-primary mb-4">Track Your Budget Easily</h1>
@@ -36,8 +40,9 @@ const Hero = () => {
           </a>
         </div>
 
-        <div className="md:w-1/2">
-          <Pie data={data} />
+       {/* Render the pie chart */}
+       <div className="w-full max-w-xl mx-auto h-96"> {/* Adjust the height here */}
+          <ChartComponent type="pie" data={data} options={options} />
         </div>
       </div>
     </section>

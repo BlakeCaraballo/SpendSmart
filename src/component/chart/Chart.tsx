@@ -45,11 +45,21 @@ const Charts = () => {
 
   // Options for the charts
   const options = {
+    animations:{
+        tension: {
+            duration: 1000,
+            easing: 'linear',
+            from: 1,
+            to: 0,
+            loop: true
+          }
+    },
     responsive: true,
     plugins: {
       legend: {
         display: true,
         position: 'bottom',
+        align: 'center', 
       },
     },
   };
@@ -57,7 +67,7 @@ const Charts = () => {
   return (
 <section id="charts" className="bg-white dark:bg-gray-900 py-20">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-primary mb-8">Your Budget Overview</h2>
+        <h2 className="text-3xl font-bold text-primary mb-8">User Friendly Charts</h2>
 
         {/* Flex container for charts */}
         <div className="flex flex-wrap justify-center gap-8">
