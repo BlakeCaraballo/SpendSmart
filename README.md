@@ -4,6 +4,6 @@ a Budget Tracking App that allows users to effectively manage and visualize thei
 
 
 
-# React + TypeScript + Vite
+# React + TypeScript + Vite + React-hook-form + Zod + Dexie
 
 
