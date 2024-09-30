@@ -14,10 +14,10 @@ const NavBar = () => {
               <a href="#" className="text-gray-300 hover:text-white">Home</a>
             </li>
             <li>
-              <a href="#" className="text-gray-300 hover:text-white">About</a>
+              <a href="#hero" className="text-gray-300 hover:text-white">About</a>
             </li>
             <li>
-              <a href="#" className="text-gray-300 hover:text-white">Services</a>
+              <a href="#form" className="text-gray-300 hover:text-white">Form</a>
             </li>
             <li>
               <a href="#" className="text-gray-300 hover:text-white">Contact</a>

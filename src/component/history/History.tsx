@@ -75,6 +75,26 @@ const History = () => {
           <div key={data.id} className="border p-4">
             <h3 className="text-xl">{data.month}</h3>
             <Bar data={getChartDataForMonth(data)} />
+            <div className="mt-4">
+              <h4 className="font-bold">Bills</h4>
+              <ul className="list-disc pl-5">
+                {data.data.bills.map((bill: any, index: number) => (
+                  <li key={index}>
+                    {bill.name}: ${bill.amount}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-4">
+              <h4 className="font-bold">Subscriptions</h4>
+              <ul className="list-disc pl-5">
+                {data.data.subscriptions.map((subscription: any, index: number) => (
+                  <li key={index}>
+                    {subscription.name}: ${subscription.amount}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
       </div>

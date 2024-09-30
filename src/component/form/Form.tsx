@@ -58,125 +58,139 @@ const Form = ({ onSubmit }: { onSubmit: (data: FormData) => void }) => {
   const addSubscription = () => appendSubscription({ name: '', amount: 0 });
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)} className="p-4">
-         {/* Month Dropdown */}
-      <div className="mb-4">
-        <label>Month</label>
-        <select {...register('month')} className="border p-2 w-full">
-          <option value="">Select a Month</option>
-          {['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].map((month) => (
-            <option key={month} value={month}>{month}</option>
-          ))}
-        </select>
-        {errors.month && <p className="text-red-500">{errors.month.message}</p>}
-      </div>
+    <section id='form'>
+      <form onSubmit={handleSubmit(handleFormSubmit)} className="p-4">
+        {/* Month and Income Inputs Side by Side */}
+        <div className="flex flex-wrap mb-4">
+          <div className="w-full sm:w-1/2 pr-2">
+            <label>Month</label>
+            <select {...register('month')} className="border p-2 w-full">
+              <option value="">Select a Month</option>
+              {['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].map((month) => (
+                <option key={month} value={month}>{month}</option>
+              ))}
+            </select>
+            {errors.month && <p className="text-red-500">{errors.month.message}</p>}
+          </div>
 
-      {/* Income */}
-      <div className="mb-4">
-        <label>Income</label>
-        <input
-          type="number"
-          {...register('income', { valueAsNumber: true })}
-          className="border p-2 w-full"
-        />
-        {errors.income && <p className="text-red-500">{errors.income.message}</p>}
-      </div>
+          <div className="w-full sm:w-1/2 pl-2">
+            <label>Income💰</label>
+            <input
+              type="number"
+              {...register('income', { valueAsNumber: true })}
+              className="border p-2 w-full"
+            />
+            {errors.income && <p className="text-red-500">{errors.income.message}</p>}
+          </div>
+        </div>
 
-      {/* Recurring Bills */}
-      {billFields.map((bill, index) => (
-        <div key={bill.id} className="mb-4">
-          <label>Bill Name</label>
-          <input
-            {...register(`bills.${index}.name`)}
-            className="border p-2 w-full mb-2"
-          />
-          {errors.bills?.[index]?.name && <p className="text-red-500">{errors.bills[index]?.name?.message}</p>}
+        {/* Recurring Bills */}
+        {billFields.map((bill, index) => (
+          <div key={bill.id} className="flex mb-4">
+            <div className="w-full sm:w-1/2 pr-2">
+              <label>Bill Name💵</label>
+              <input
+                {...register(`bills.${index}.name`)}
+                className="border p-2 w-full mb-2"
+              />
+              {errors.bills?.[index]?.name && <p className="text-red-500">{errors.bills[index]?.name?.message}</p>}
+            </div>
 
-          <label>Bill Amount</label>
+            <div className="w-full sm:w-1/2 pl-2">
+              <label>Bill Amount</label>
+              <input
+                type="number"
+                {...register(`bills.${index}.amount`, { valueAsNumber: true })}
+                className="border p-2 w-full"
+              />
+              {errors.bills?.[index]?.amount && <p className="text-red-500">{errors.bills[index]?.amount?.message}</p>}
+            </div>
+          </div>
+        ))}
+
+        <button type="button" onClick={addBill} className="bg-blue-500 text-white p-2 mb-4">
+          Add Bill
+        </button>
+
+        {/* Other Expenses Side by Side */}
+        <div className="flex flex-wrap mb-4">
+          <div className="w-full sm:w-1/3 pr-2">
+            <label>Food/Grocery🍉</label>
+            <input
+              type="number"
+              {...register('food', { valueAsNumber: true })}
+              className="border p-2 w-full"
+            />
+            {errors.food && <p className="text-red-500">{errors.food.message}</p>}
+          </div>
+
+          <div className="w-full sm:w-1/3 pr-2">
+            <label>Gas🚗</label>
+            <input
+              type="number"
+              {...register('gas', { valueAsNumber: true })}
+              className="border p-2 w-full"
+            />
+            {errors.gas && <p className="text-red-500">{errors.gas.message}</p>}
+          </div>
+
+          <div className="w-full sm:w-1/3 pl-2">
+            <label>Misc Expenses🍿</label>
+            <input
+              type="number"
+              {...register('misc', { valueAsNumber: true })}
+              className="border p-2 w-full"
+            />
+            {errors.misc && <p className="text-red-500">{errors.misc.message}</p>}
+          </div>
+        </div>
+
+        {/* Subscriptions */}
+        {subscriptionFields.map((subscription, index) => (
+          <div key={subscription.id} className="flex mb-4">
+            <div className="w-full sm:w-1/2 pr-2">
+              <label>Subscription Name 🤑</label>
+              <input
+                {...register(`subscriptions.${index}.name`)}
+                className="border p-2 w-full mb-2"
+              />
+              {errors.subscriptions?.[index]?.name && <p className="text-red-500">{errors.subscriptions[index]?.name?.message}</p>}
+            </div>
+
+            <div className="w-full sm:w-1/2 pl-2">
+              <label>Subscription Amount</label>
+              <input
+                type="number"
+                {...register(`subscriptions.${index}.amount`, { valueAsNumber: true })}
+                className="border p-2 w-full"
+              />
+              {errors.subscriptions?.[index]?.amount && <p className="text-red-500">{errors.subscriptions[index]?.amount?.message}</p>}
+            </div>
+          </div>
+        ))}
+
+        <button type="button" onClick={addSubscription} className="bg-blue-500 text-white p-2 mb-4">
+          Add Subscription
+        </button>
+
+        {/* Credit Cards */}
+        <div className="mb-4">
+          <label>Credit Cards</label>
           <input
             type="number"
-            {...register(`bills.${index}.amount`, { valueAsNumber: true })}
+            {...register('creditCards', { valueAsNumber: true })}
             className="border p-2 w-full"
           />
-          {errors.bills?.[index]?.amount && <p className="text-red-500">{errors.bills[index]?.amount?.message}</p>}
+          {errors.creditCards && <p className="text-red-500">{errors.creditCards.message}</p>}
         </div>
-      ))}
 
-      <button type="button" onClick={addBill} className="bg-blue-500 text-white p-2 mb-4">
-        Add Bill
-      </button>
-
-      {/* Other Expenses */}
-      <div className="mb-4">
-        <label>Food/Grocery</label>
-        <input
-          type="number"
-          {...register('food', { valueAsNumber: true })}
-          className="border p-2 w-full"
-        />
-        {errors.food && <p className="text-red-500">{errors.food.message}</p>}
-      </div>
-
-      <div className="mb-4">
-        <label>Gas</label>
-        <input
-          type="number"
-          {...register('gas', { valueAsNumber: true })}
-          className="border p-2 w-full"
-        />
-        {errors.gas && <p className="text-red-500">{errors.gas.message}</p>}
-      </div>
-
-      <div className="mb-4">
-        <label>Misc Expenses</label>
-        <input
-          type="number"
-          {...register('misc', { valueAsNumber: true })}
-          className="border p-2 w-full"
-        />
-        {errors.misc && <p className="text-red-500">{errors.misc.message}</p>}
-      </div>
-
-      {/* Subscriptions */}
-      {subscriptionFields.map((subscription, index) => (
-        <div key={subscription.id} className="mb-4">
-          <label>Subscription Name</label>
-          <input
-            {...register(`subscriptions.${index}.name`)}
-            className="border p-2 w-full mb-2"
-          />
-          {errors.subscriptions?.[index]?.name && <p className="text-red-500">{errors.subscriptions[index]?.name?.message}</p>}
-
-          <label>Subscription Amount</label>
-          <input
-            type="number"
-            {...register(`subscriptions.${index}.amount`, { valueAsNumber: true })}
-            className="border p-2 w-full"
-          />
-          {errors.subscriptions?.[index]?.amount && <p className="text-red-500">{errors.subscriptions[index]?.amount?.message}</p>}
-        </div>
-      ))}
-
-      <button type="button" onClick={addSubscription} className="bg-blue-500 text-white p-2 mb-4">
-        Add Subscription
-      </button>
-
-      {/* Credit Cards */}
-      <div className="mb-4">
-        <label>Credit Cards</label>
-        <input
-          type="number"
-          {...register('creditCards', { valueAsNumber: true })}
-          className="border p-2 w-full"
-        />
-        {errors.creditCards && <p className="text-red-500">{errors.creditCards.message}</p>}
-      </div>
-
-      <button type="submit" className="bg-green-500 text-white p-2 w-full">
-        Submit
-      </button>
-    </form>
+        <button type="submit" className="bg-green-500 text-white p-2 w-full">
+          Submit
+        </button>
+      </form>
+    </section>
   );
 };
+
 
 export default Form;
