@@ -28,14 +28,14 @@ const Hero = () => {
       };
 
   return (
-    <section id="hero" className="bg-gray-100 dark:bg-background py-80">
+    <section id="hero" className="bg-gray-100 dark:bg-gradient-to-b from-gray-900 to-black py-80">
       <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center justify-between">
         <div className="md:w-1/2">
           <h1 className="text-4xl font-bold text-primary mb-4">Track Your Budget Easily</h1>
           <p className="text-lg text-secondary mb-6">
             Get insights into your spending and manage your finances effortlessly.
           </p>
-          <a href="#charts" className="bg-primary text-white px-6 py-2 rounded-md text-lg hover:bg-primary-foreground">
+          <a href="#charts" className="bg-primary text-white px-6 py-2 rounded-md text-lg hover:bg-primary-foreground dark:bg-blue-700 dark:text-black">
             View Charts
           </a>
         </div>
