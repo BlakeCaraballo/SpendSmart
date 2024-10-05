@@ -9,8 +9,11 @@ import {
   BarElement,
   PointElement,
   LineElement,
+  RadialLinearScale,
+  RadarController,
+  BubbleController,
 } from 'chart.js';
-import { Pie, Bar, Line } from 'react-chartjs-2';
+import { Pie, Bar, Line, Radar, Doughnut, Bubble } from 'react-chartjs-2';
 
 // Register necessary components for different chart types
 ChartJS.register(
@@ -21,13 +24,19 @@ ChartJS.register(
   LinearScale,
   BarElement,
   PointElement,
-  LineElement
+  LineElement,
+  RadialLinearScale,
+  RadarController,
+  BubbleController
 );
 
 const chartMap = {
   pie: Pie,
   bar: Bar,
   line: Line,
+  radar: Radar,
+  doughnut: Doughnut,
+  bubble: Bubble
 };
 
 const ChartComponent = ({ type, data, options }) => {

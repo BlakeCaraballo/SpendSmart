@@ -58,8 +58,8 @@ const Form = ({ onSubmit }: { onSubmit: (data: FormData) => void }) => {
   const addSubscription = () => appendSubscription({ name: '', amount: 0 });
 
   return (
-    <section id='form' className='dark:bg-gradient-to-b from-gray-900 to-black'>
-      <form onSubmit={handleSubmit(handleFormSubmit)} className="p-4 bg-gray-100 dark:bg-black max-w-lg mx-auto rounded-xl">
+    <section id='form' className=' dark:bg-gradient-to-b from-gray-900 to-black py-96'>
+      <form onSubmit={handleSubmit(handleFormSubmit)} className="p-4 bg-gray-200 dark:bg-black max-w-lg mx-auto rounded-xl">
         {/* Month and Income Inputs Side by Side */}
         <div className="flex flex-wrap mb-4">
           <div className="w-full sm:w-1/2 pr-2">

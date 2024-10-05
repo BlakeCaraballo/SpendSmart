@@ -120,7 +120,7 @@ const History = () => {
               </div>
 
               {/* Centered Leftover section */}
-              <div className="flex justify-center mt-4">
+              <div className="flex justify-around mt-4">
                 <div className="text-center">
                   <h4 className="font-bold">Leftover</h4>
                   <p className="text-lg">${calculateLeftover(data)}</p>
