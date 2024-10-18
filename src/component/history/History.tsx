@@ -110,6 +110,31 @@ const History = () => {
                   <option value="radar">Radar</option>
                 </select>
                 <ChartComponent data={getChartDataForMonth(data)} />
+                {/* Flexbox layout for Bills and Subscriptions on the left */}
+                <div className="flex justify-between items-start mt-4">
+                  <div>
+                    <h4 className="font-bold">Bills</h4>
+                    <ul className="pl-5 list-none">
+                      {data.data.bills.map((bill: any, index: number) => (
+                        <li key={index}>
+                          {bill.name}: ${bill.amount}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-4">
+                      <h4 className="font-bold">Subscriptions</h4>
+                      <ul className="list-none pl-5">
+                        {data.data.subscriptions.map(
+                          (subscription: any, index: number) => (
+                            <li key={index}>
+                              {subscription.name}: ${subscription.amount}
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             );
           })}

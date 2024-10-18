@@ -132,7 +132,7 @@ const ChartsCarousel = () => {
       id="charts"
       className="relative dark:bg-gradient-to-b from-black to-gray-900 py-96"
     >
-      <div className="container mx-auto px-6 relative flex justify-center perspective-[1000px] py-12">
+      <div className="container mx-auto px-6 relative flex justify-center  py-12">
         <div
           className="carousel w-[300px] h-[300px] absolute transition-transform duration-1000 "
           style={{
