@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -12,8 +12,8 @@ import {
   RadialLinearScale,
   RadarController,
   BubbleController,
-} from 'chart.js';
-import { Pie, Bar, Line, Radar, Doughnut, Bubble } from 'react-chartjs-2';
+} from "chart.js";
+import { Pie, Bar, Line, Radar, Doughnut, Bubble } from "react-chartjs-2";
 
 // Register necessary components for different chart types
 ChartJS.register(
@@ -36,7 +36,7 @@ const chartMap = {
   line: Line,
   radar: Radar,
   doughnut: Doughnut,
-  bubble: Bubble
+  bubble: Bubble,
 };
 
 const ChartComponent = ({ type, data, options }) => {

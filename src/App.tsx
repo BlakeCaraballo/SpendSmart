@@ -1,12 +1,10 @@
-import Charts from "./component/chart/Chart"
+import Charts from "./component/chart/ChartsCarousel";
 import UserChart from "./component/chart/UserChart";
-import Form from "./component/form/Form"
-import Hero from "./component/hero/Hero"
+import Form from "./component/form/Form";
+import Hero from "./component/hero/Hero";
 import History from "./component/history/History";
-import NavBar from "./component/nav/NavBar"
-import React, { useState } from 'react';
-
-
+import NavBar from "./component/nav/NavBar";
+import React, { useState } from "react";
 
 function App() {
   const [userData, setUserData] = useState(null);
@@ -17,14 +15,14 @@ function App() {
 
   return (
     <>
-      <NavBar/>
-      <Hero/>
-      <Charts/>
+      <NavBar />
+      <Hero />
+      <Charts />
       <Form onSubmit={handleFormSubmit} />
       {userData && <UserChart data={userData} />}
-      <History/>
+      <History />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

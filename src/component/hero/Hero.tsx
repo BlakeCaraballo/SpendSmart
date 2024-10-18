@@ -1,10 +1,22 @@
-import React from 'react';
-import ChartComponent from '../chart/ChartComponent';
-
+import React from "react";
+import ChartComponent from "../chart/ChartComponent";
 
 // Generate months as labels
 const generateLabels = (count) => {
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   return months.slice(0, count);
 };
 
@@ -18,19 +30,22 @@ const generateData = (min, max, count) => {
 };
 
 // A function to create semi-transparent colors (you can adjust the color and transparency)
-const transparentize = (color, opacity = 0.5) => {
-  return `${color}${Math.round(opacity * 255).toString(16)}`;
+const transparentize = (color: string, opacity: number = 0.5): string => {
+  const alpha = Math.round(opacity * 255)
+    .toString(16)
+    .padStart(2, "0"); // Ensure the alpha is 2 characters long
+  return `${color}${alpha}`;
 };
 
 // Your color palette (similar to what 'Utils.CHART_COLORS' would provide)
 const CHART_COLORS = {
-  red: '#FF6384',
-  orange: '#FF9F40',
-  yellow: '#FFCE56',
-  green: '#4BC0C0',
-  blue: '#36A2EB',
-  purple: '#9966FF',
-  grey: '#C9CBCF',
+  red: "#FF6384",
+  orange: "#FF9F40",
+  yellow: "#FFCE56",
+  green: "#4BC0C0",
+  blue: "#36A2EB",
+  purple: "#9966FF",
+  grey: "#C9CBCF",
 };
 
 const Hero = () => {
@@ -43,105 +58,110 @@ const Hero = () => {
   };
 
   const labels = generateLabels(inputs.count);
-  
+
   const data = {
     labels: labels,
     datasets: [
       {
-        label: 'D0',
+        label: "D0",
         data: generateData(inputs.min, inputs.max, inputs.count),
         borderColor: CHART_COLORS.red,
         backgroundColor: transparentize(CHART_COLORS.red),
         fill: true, // Filling under the data line
       },
       {
-        label: 'D1',
+        label: "D1",
         data: generateData(inputs.min, inputs.max, inputs.count),
         borderColor: CHART_COLORS.orange,
         hidden: true,
         backgroundColor: transparentize(CHART_COLORS.orange),
-        fill: '-1', // Fill based on the previous dataset
+        fill: "-1", // Fill based on the previous dataset
       },
       {
-        label: 'D2',
+        label: "D2",
         data: generateData(inputs.min, inputs.max, inputs.count),
         borderColor: CHART_COLORS.yellow,
         backgroundColor: transparentize(CHART_COLORS.yellow),
         fill: true,
       },
       {
-        label: 'D3',
+        label: "D3",
         data: generateData(inputs.min, inputs.max, inputs.count),
         borderColor: CHART_COLORS.green,
         backgroundColor: transparentize(CHART_COLORS.green),
-        fill: false, // No filling for this dataset
+        fill: "true", // No filling for this dataset
       },
       {
-        label: 'D4',
+        label: "D4",
         data: generateData(inputs.min, inputs.max, inputs.count),
         borderColor: CHART_COLORS.blue,
         backgroundColor: transparentize(CHART_COLORS.blue),
-        fill: '-1', // Fill relative to the previous dataset
+        fill: true, // Fill relative to the previous dataset
       },
       {
-        label: 'D5',
+        label: "D5",
         data: generateData(inputs.min, inputs.max, inputs.count),
         borderColor: CHART_COLORS.purple,
         backgroundColor: transparentize(CHART_COLORS.purple),
-        fill: '-1',
+        fill: true,
       },
       {
-        label: 'D6',
+        label: "D6",
         data: generateData(inputs.min, inputs.max, inputs.count),
         borderColor: CHART_COLORS.grey,
         backgroundColor: transparentize(CHART_COLORS.grey),
         fill: true, // Filling under this line
-      }
-    ]
+      },
+    ],
   };
 
   const config = {
-    type: 'radar',
+    type: "radar",
     data: data,
     options: {
       plugins: {
         filler: {
           propagate: false,
         },
-        'samples-filler-analyser': {
-          target: 'chart-analyser',
-        },
       },
-      interaction: {
-        intersect: false,
-      },
-      r: {
-        angleLines: {
-          display: false // Optionally hide the angle lines
-        },
-        suggestedMin: 0, // Minimum value on the scale
-        suggestedMax: 100, // Maximum value on the scale
-        ticks: {
-          display: false, // Show the ticks (numbers)
-          color: '#FF6384', // Set the color of the ticks (numbers)
-          font: {
-            size: 14, // Set the font size of the ticks
-            weight: 'bold', // Set the font weight
+      scales: {
+        r: {
+          angleLines: {
+            display: true,
           },
-        }
-      }
+          suggestedMin: 0,
+          suggestedMax: 100,
+          ticks: {
+            display: true,
+            color: "#FF6384",
+            font: {
+              size: 14,
+              weight: "bold",
+            },
+          },
+        },
+      },
     },
   };
 
   return (
-    <section id="hero" className="dark:bg-gradient-to-b from-gray-900 to-black py-80">
+    <section
+      id="hero"
+      className="dark:bg-gradient-to-b from-gray-900 to-black py-80"
+    >
       <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center justify-between">
         <div className="md:w-1/2">
-          <h1 className="text-4xl font-bold text-primary mb-4">Track Your Budget Easily</h1>
+          <h1 className="text-4xl font-bold text-primary mb-4">
+            Track Your Budget Easily
+          </h1>
           <p className="text-lg text-primary mb-6">
-            Get insights into your spending and manage your finances effortlessly.
+            Get insights into your spending and manage your finances
+            effortlessly.
           </p>
-          <a href="#charts" className="bg-primary text-white px-6 py-2 rounded-md text-lg hover:bg-primary-foreground dark:bg-blue-700 dark:text-black">
+          <a
+            href="#charts"
+            className="bg-primary text-white px-6 py-2 rounded-2xl text-lg hover:bg-primary-foreground dark:bg-blue-700 dark:text-black"
+          >
             View Charts
           </a>
         </div>
